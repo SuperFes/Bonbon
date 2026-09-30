@@ -1,0 +1,5 @@
+/var/db/repos/Local/tools/llvm-libc-probe/.prefix/lib/crt1.o
+/var/db/repos/Local/tools/llvm-libc-probe/.prefix/lib/crti.o
+/var/db/repos/Local/tools/llvm-libc-probe/.prefix/lib/crtn.o
+/var/db/repos/Local/tools/llvm-libc-probe/.prefix/lib/libc.a
+/var/db/repos/Local/tools/llvm-libc-probe/.prefix/lib/libm.a

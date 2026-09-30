@@ -1,0 +1,70 @@
+Testing compiler for supporting FLAGS-Wbuiltin-declaration-mismatch --start-no-unused-arguments --unwindlib=none --end-no-unused-arguments -nostdlib++ -nostdinc++ -nodefaultlibs:
+Command: /usr/lib/llvm/22/bin/clang;;;;-Werror=date-time;-Werror=unguarded-availability-new;-Wall;-Wextra;-Wno-unused-parameter;-Wwrite-strings;-Wcast-qual;-Wmissing-field-initializers;-Wimplicit-fallthrough;-Wcovered-switch-default;-Wstring-conversion;-Wmisleading-indentation;-Wctad-maybe-unsupported;-fdiagnostics-color;-ffunction-sections;-fdata-sections;-Wall;-Wno-unused-parameter;-Wbuiltin-declaration-mismatch;;--start-no-unused-arguments;--unwindlib=none;--end-no-unused-arguments;-nostdlib++;-nostdinc++;-nodefaultlibs;-o;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/test.o;-c;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c
+
+[0;1;35mwarning: [0m[1munknown warning option '-Wbuiltin-declaration-mismatch'; did you mean '-Wmissing-declarations'? [-Wunknown-warning-option][0m
+1 warning generated.
+
+0
+Testing compiler for supporting FLAGS/Zl --start-no-unused-arguments --unwindlib=none --end-no-unused-arguments -nostdlib++ -nostdinc++ -nodefaultlibs:
+Command: /usr/lib/llvm/22/bin/clang;;;;-Werror=date-time;-Werror=unguarded-availability-new;-Wall;-Wextra;-Wno-unused-parameter;-Wwrite-strings;-Wcast-qual;-Wmissing-field-initializers;-Wimplicit-fallthrough;-Wcovered-switch-default;-Wstring-conversion;-Wmisleading-indentation;-Wctad-maybe-unsupported;-fdiagnostics-color;-ffunction-sections;-fdata-sections;-Wall;-Wno-unused-parameter;/Zl;;--start-no-unused-arguments;--unwindlib=none;--end-no-unused-arguments;-nostdlib++;-nostdinc++;-nodefaultlibs;-o;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/test.o;-c;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c
+
+clang: [0;1;31merror: [0m[1mno such file or directory: '/Zl'[0m
+
+1
+Testing compiler for supporting SOURCE
+asm(".arch armv8-a+lse")
+asm("cas w0, w1, [x2]")
+:
+Command: /usr/lib/llvm/22/bin/clang;;;;-Werror=date-time;-Werror=unguarded-availability-new;-Wall;-Wextra;-Wno-unused-parameter;-Wwrite-strings;-Wcast-qual;-Wmissing-field-initializers;-Wimplicit-fallthrough;-Wcovered-switch-default;-Wstring-conversion;-Wmisleading-indentation;-Wctad-maybe-unsupported;-fdiagnostics-color;-ffunction-sections;-fdata-sections;-Wall;-Wno-unused-parameter;;-o;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/test.o;-c;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c
+
+[1m<inline asm>:2:1: [0m[0;1;31merror: [0m[1minvalid instruction mnemonic 'cas'[0m
+    2 | cas w0, w1, [x2][0m
+      | [0;1;32m^
+[0m1 error generated.
+
+1
+Testing compiler for supporting SOURCE
+void foo(void)  __arm_streaming_compatible {
+  asm(".arch armv9-a+sme2\n"
+      "smstart\n"
+      "ldr zt0, [sp]")
+}
+:
+Command: /usr/lib/llvm/22/bin/clang;;;;-Werror=date-time;-Werror=unguarded-availability-new;-Wall;-Wextra;-Wno-unused-parameter;-Wwrite-strings;-Wcast-qual;-Wmissing-field-initializers;-Wimplicit-fallthrough;-Wcovered-switch-default;-Wstring-conversion;-Wmisleading-indentation;-Wctad-maybe-unsupported;-fdiagnostics-color;-ffunction-sections;-fdata-sections;-Wall;-Wno-unused-parameter;;-o;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/test.o;-c;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c
+
+[1m/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c:2:17: [0m[0;1;31merror: [0m[1m'__arm_streaming_compatible' is not supported on this target[0m
+    2 | [0;34mvoid[0m foo([0;34mvoid[0m)  [0;34m__arm_streaming_compatible[0m {[0m
+      | [0;1;32m                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+[0m1 error generated.
+
+1
+Testing compiler for supporting SOURCE
+void foo() {
+#ifndef __ARM_FEATURE_UNALIGNED
+#error "Unaligned accesses unsupported"
+#endif
+}
+:
+Command: /usr/lib/llvm/22/bin/clang;;;;-Werror=date-time;-Werror=unguarded-availability-new;-Wall;-Wextra;-Wno-unused-parameter;-Wwrite-strings;-Wcast-qual;-Wmissing-field-initializers;-Wimplicit-fallthrough;-Wcovered-switch-default;-Wstring-conversion;-Wmisleading-indentation;-Wctad-maybe-unsupported;-fdiagnostics-color;-ffunction-sections;-fdata-sections;-Wall;-Wno-unused-parameter;;-o;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/test.o;-c;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c
+
+[1m/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c:4:2: [0m[0;1;31merror: [0m[1m"Unaligned accesses unsupported"[0m
+    4 | #error [0;32m"Unaligned accesses unsupported"[0m
+      | [0;1;32m ^
+[0m1 error generated.
+
+1
+Testing compiler for supporting SOURCE
+void foo() {
+#ifndef __ARM_FP
+#error "No floating-point support"
+#endif
+}
+:
+Command: /usr/lib/llvm/22/bin/clang;;;;-Werror=date-time;-Werror=unguarded-availability-new;-Wall;-Wextra;-Wno-unused-parameter;-Wwrite-strings;-Wcast-qual;-Wmissing-field-initializers;-Wimplicit-fallthrough;-Wcovered-switch-default;-Wstring-conversion;-Wmisleading-indentation;-Wctad-maybe-unsupported;-fdiagnostics-color;-ffunction-sections;-fdata-sections;-Wall;-Wno-unused-parameter;;-o;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/test.o;-c;/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c
+
+[1m/var/db/repos/Local/tools/llvm-libc-probe/.build/CMakeFiles/src.c:4:2: [0m[0;1;31merror: [0m[1m"No floating-point support"[0m
+    4 | #error [0;32m"No floating-point support"[0m
+      | [0;1;32m ^
+[0m1 error generated.
+
+1

@@ -1,0 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl] app-alternatives/ninja >=dev-build/cmake-3.28.5
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-util/vulkan-headers kde-plasma/plasma-workspace media-plugins/gst-plugins-libav media-video/mpv[vulkan] dev-python/websockets dev-qt/qtdeclarative:6 dev-qt/qtwebsockets:6 dev-qt/qtwebchannel:6 app-arch/lz4 media-libs/mesa[vulkan]
+DESCRIPTION=A KDE wallpaper plugin integrating Wallpaper Engine
+EAPI=8
+HOMEPAGE=https://github.com/catsout/wallpaper-engine-kde-plugin
+INHERIT=git-r3 cmake
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2.0
+PROPERTIES=live
+RDEPEND=dev-util/vulkan-headers kde-plasma/plasma-workspace media-plugins/gst-plugins-libav media-video/mpv[vulkan] dev-python/websockets dev-qt/qtdeclarative:6 dev-qt/qtwebsockets:6 dev-qt/qtwebchannel:6 app-arch/lz4 media-libs/mesa[vulkan]
+SLOT=0
+_eclasses_=cmake	5691a3da96eac88f135cf3596b8c2c3c	flag-o-matic	ed1eda86c8f746a2a75f7f9f7478f5f4	git-r3	875eb471682d3e1f18da124be97dcc81	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	d063ea1900a793f93eb095010d6d9156	toolchain-funcs	8a2c298bde71ecf3f452dd9e67c94369	xdg-utils	42869b3c8d86a70ef3cf75165a395e09
+_md5_=493bca9633be4e18f0f439ba0581022d
