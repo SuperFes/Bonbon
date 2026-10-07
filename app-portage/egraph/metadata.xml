@@ -6,6 +6,7 @@
 		<name>Aaron Nixon</name>
 	</maintainer>
 	<use>
+		<flag name="notify">A desktop notification of the notices (egraph notify), through sd-bus from <pkg>sys-apps/systemd</pkg> or <pkg>sys-auth/elogind</pkg></flag>
 		<flag name="systemd">Log runs to the systemd journal, through <pkg>sys-apps/systemd</pkg>; otherwise to /var/log/egraph.log</flag>
 		<flag name="tui">The terminal interface (egraph tui), with <pkg>dev-cpp/notcurses</pkg></flag>
 	</use>
