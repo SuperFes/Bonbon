@@ -529,9 +529,13 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="
+# The group owns the config, so it's needed by src_install too.
+DEPEND="
 	acct-group/armada-matrix-bridge
 	acct-user/armada-matrix-bridge
+"
+RDEPEND="
+	${DEPEND}
 	app-misc/ca-certificates
 "
 
